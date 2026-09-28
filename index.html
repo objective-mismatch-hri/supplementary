@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Supplementary Material</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #faf9f6;
+    --ink: #1c1c1b;
+    --muted: #6e7c7c;
+    --line: #dad6cc;
+    --accent: #2b4c59;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+  }
+
+  main {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 5rem 1.5rem 6rem;
+  }
+
+  .kicker {
+    font-size: 0.9rem;
+    color: var(--muted);
+    margin: 0 0 0.75rem;
+  }
+
+  h1 {
+    font-family: 'Source Serif 4', serif;
+    font-weight: 600;
+    font-size: 2.1rem;
+    line-height: 1.25;
+    margin: 0 0 1.25rem;
+  }
+
+  p {
+    margin: 0 0 1.25rem;
+    max-width: 60ch;
+  }
+
+  .paper-link {
+    color: var(--accent);
+    text-decoration: none;
+    border-bottom: 1px solid var(--accent);
+  }
+
+  .paper-link:hover {
+    opacity: 0.75;
+  }
+
+  .divider {
+    border: none;
+    border-top: 1px solid var(--line);
+    margin: 2.5rem 0;
+  }
+
+  .viewer {
+    border: 1px solid var(--line);
+    background: #fff;
+    height: 78vh;
+    min-height: 420px;
+    margin-bottom: 1rem;
+  }
+
+  .viewer object {
+    width: 100%;
+    height: 100%;
+  }
+
+  .fallback {
+    padding: 2rem;
+    text-align: center;
+    color: var(--muted);
+  }
+
+  .actions {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+  }
+
+  .button {
+    display: inline-block;
+    background: var(--accent);
+    color: #fff;
+    text-decoration: none;
+    padding: 0.7rem 1.4rem;
+    font-size: 0.95rem;
+  }
+
+  .button:hover {
+    opacity: 0.9;
+  }
+
+  .file-note {
+    font-size: 0.9rem;
+    color: var(--muted);
+  }
+
+  footer {
+    margin-top: 4rem;
+    font-size: 0.85rem;
+    color: var(--muted);
+  }
+
+  @media (max-width: 600px) {
+    .viewer { display: none; }
+    main { padding: 3rem 1.25rem 4rem; }
+    h1 { font-size: 1.7rem; }
+  }
+</style>
+</head>
+<body>
+<main>
+  <p class="kicker">Supplementary material</p>
+  <h1>[Paper title goes here]</h1>
+  <p>
+    This page hosts the supplementary material referenced in our submission to
+    T-RL. It contains additional proofs, experiment details, and results that
+    did not fit within the main paper's page limit.
+  </p>
+  <p>
+    Main paper: <a class="paper-link" href="#">[link to anonymous PDF or OpenReview page]</a>
+  </p>
+
+  <hr class="divider">
+
+  <div class="viewer">
+    <object data="supp.pdf" type="application/pdf">
+      <div class="fallback">
+        Your browser can't display the PDF inline.<br>
+        Use the link below to open it directly.
+      </div>
+    </object>
+  </div>
+
+  <div class="actions">
+    <a class="button" href="supp.pdf" target="_blank" rel="noopener">Open supplementary PDF</a>
+    <span class="file-note">supp.pdf</span>
+  </div>
+
+  <footer>
+    Submitted anonymously for double-blind review.
+  </footer>
+</main>
+</body>
+</html>
