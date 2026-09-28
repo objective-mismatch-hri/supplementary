@@ -112,6 +112,30 @@
     color: var(--muted);
   }
 
+  .videos {
+    display: grid;
+    gap: 2.5rem;
+    margin-top: 1rem;
+  }
+
+  .video-block h2 {
+    font-family: 'Source Serif 4', serif;
+    font-weight: 600;
+    font-size: 1.2rem;
+    margin: 0 0 0.5rem;
+  }
+
+  .video-block p {
+    margin: 0 0 0.75rem;
+  }
+
+  video {
+    width: 100%;
+    border: 1px solid var(--line);
+    background: #000;
+    display: block;
+  }
+
   footer {
     margin-top: 4rem;
     font-size: 0.85rem;
@@ -128,10 +152,9 @@
 <body>
 <main>
   <p class="kicker">Supplementary material</p>
-  <h1>[Paper title goes here]</h1>
+  <h1>Behavioural Quality Is Not Learning Utility: Objective Mismatch in Human Behaviour Models for Robot Learning</h1>
   <p>
-    This page hosts the supplementary material referenced in our submission. It contains additional model details, experiment details, and results that
-    did not fit within the main paper's page limit.
+    This page hosts the supplementary material referenced in our submission. It contains additional model details, experiment details, and results that did not fit within the main paper's page limit.
   </p>
 
   <hr class="divider">
@@ -148,6 +171,28 @@
   <div class="actions">
     <a class="button" href="supp.pdf" target="_blank" rel="noopener">Open supplementary PDF</a>
     <span class="file-note">supp.pdf</span>
+  </div>
+
+  <hr class="divider">
+
+  <div class="videos">
+    <div class="video-block">
+      <h2>Highway scenario</h2>
+      <p>Simulated trajectories from our calibrated human model in the highway setting.</p>
+      <video controls preload="metadata">
+        <source src="highway_models.mp4" type="video/mp4">
+        Your browser doesn't support embedded video. <a href="highway_models.mp4">Download the file</a> instead.
+      </video>
+    </div>
+
+    <div class="video-block">
+      <h2>Handover scenario</h2>
+      <p>Simulated trajectories from our calibrated human model in the handover setting.</p>
+      <video controls preload="metadata">
+        <source src="handover_models.mp4" type="video/mp4">
+        Your browser doesn't support embedded video. <a href="handover_models.mp4">Download the file</a> instead.
+      </video>
+    </div>
   </div>
 
   <footer>
