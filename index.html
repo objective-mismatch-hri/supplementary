@@ -7,6 +7,10 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"
+  onload="renderMathInElement(document.body, {delimiters: [{left: '$$', right: '$$', display: true}, {left: '$', right: '$', display: false}], throwOnError: false});"></script>
 <style>
   :root {
     --bg: #faf9f6;
@@ -14,6 +18,7 @@
     --muted: #6e7c7c;
     --line: #dad6cc;
     --accent: #2b4c59;
+    --card: #ffffff;
   }
 
   * { box-sizing: border-box; }
@@ -28,7 +33,7 @@
   }
 
   main {
-    max-width: 680px;
+    max-width: 760px;
     margin: 0 auto;
     padding: 5rem 1.5rem 6rem;
   }
@@ -47,10 +52,36 @@
     margin: 0 0 1.25rem;
   }
 
+  h2 {
+    font-family: 'Source Serif 4', serif;
+    font-weight: 600;
+    font-size: 1.6rem;
+    line-height: 1.3;
+    margin: 0 0 0.5rem;
+  }
+
+  h3 {
+    font-family: 'Source Serif 4', serif;
+    font-weight: 600;
+    font-size: 1.2rem;
+    margin: 2rem 0 0.75rem;
+  }
+
+  h4 {
+    font-size: 1rem;
+    font-weight: 500;
+    margin: 0 0 0.5rem;
+  }
+
   p {
     margin: 0 0 1.25rem;
-    max-width: 60ch;
+    max-width: 65ch;
   }
+
+  ul { margin: 0 0 1rem; padding-left: 1.25rem; }
+  li { margin-bottom: 0.25rem; }
+
+  a { color: var(--accent); }
 
   .paper-link {
     color: var(--accent);
@@ -62,11 +93,140 @@
     opacity: 0.75;
   }
 
+  .toc {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1.5rem;
+    font-size: 0.95rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .toc a { text-decoration: none; border-bottom: 1px solid var(--accent); }
+
+  .section-note {
+    font-size: 0.9rem;
+    color: var(--muted);
+  }
+
   .divider {
     border: none;
     border-top: 1px solid var(--line);
     margin: 2.5rem 0;
   }
+
+  .model {
+    background: var(--card);
+    border: 1px solid var(--line);
+    padding: 1.25rem 1.25rem 0.75rem;
+    margin: 0 0 1.25rem;
+  }
+
+  .model p, .model ul { font-size: 0.95rem; }
+
+  .eq {
+    overflow-x: auto;
+    overflow-y: hidden;
+    margin: 0 0 0.75rem;
+  }
+
+  .params {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin: 0 0 0.9rem;
+    padding: 0;
+    list-style: none;
+  }
+
+  .params li {
+    font-size: 0.85rem;
+    border: 1px solid var(--line);
+    background: var(--bg);
+    padding: 0.15rem 0.55rem;
+    margin: 0;
+  }
+
+  .label {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--muted);
+    margin: 0 0 0.35rem;
+  }
+
+  .table-wrap {
+    overflow-x: auto;
+    margin: 0 0 0.9rem;
+  }
+
+  table {
+    border-collapse: collapse;
+    font-size: 0.85rem;
+    width: 100%;
+    font-variant-numeric: tabular-nums;
+  }
+
+  caption {
+    caption-side: top;
+    text-align: left;
+    font-size: 0.85rem;
+    color: var(--muted);
+    padding-bottom: 0.35rem;
+  }
+
+  th, td {
+    padding: 0.3rem 0.6rem;
+    border-bottom: 1px solid var(--line);
+    text-align: right;
+    white-space: nowrap;
+  }
+
+  th:first-child, td:first-child { text-align: left; }
+  thead th { font-weight: 500; border-bottom: 1.5px solid var(--ink); }
+
+  .ref {
+    font-size: 0.85rem;
+    color: var(--muted);
+    margin: 0 0 0.5rem;
+  }
+
+  .figure {
+    margin: 0 0 1rem;
+  }
+
+  .figure img {
+    display: block;
+    width: 100%;
+    height: auto;
+    background: #fff;
+    border: 1px solid var(--line);
+  }
+
+  .figure figcaption {
+    font-size: 0.85rem;
+    color: var(--muted);
+    margin-top: 0.5rem;
+  }
+
+  .pipeline {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.35rem;
+    margin: 0 0 0.9rem;
+    font-size: 0.85rem;
+  }
+
+  .pipeline .node {
+    border: 1px solid var(--accent);
+    color: var(--accent);
+    padding: 0.3rem 0.6rem;
+    background: var(--bg);
+  }
+
+  .pipeline .arrow { color: var(--muted); }
 
   .viewer {
     border: 1px solid var(--line);
@@ -112,17 +272,12 @@
     color: var(--muted);
   }
 
-  .videos {
-    display: grid;
-    gap: 2.5rem;
-    margin-top: 1rem;
+  .video-block {
+    margin-top: 2rem;
   }
 
-  .video-block h2 {
-    font-family: 'Source Serif 4', serif;
-    font-weight: 600;
-    font-size: 1.2rem;
-    margin: 0 0 0.5rem;
+  .video-block h3 {
+    margin-top: 0;
   }
 
   .video-block p {
@@ -144,8 +299,10 @@
 
   @media (max-width: 600px) {
     .viewer { display: none; }
-    main { padding: 3rem 1.25rem 4rem; }
+    main { padding: 3rem 1rem 4rem; }
     h1 { font-size: 1.7rem; }
+    h2 { font-size: 1.35rem; }
+    .model { padding: 1rem 0.9rem 0.5rem; }
   }
 </style>
 </head>
@@ -154,46 +311,357 @@
   <p class="kicker">Supplementary material</p>
   <h1>Behavioural Quality Is Not Learning Utility: Objective Mismatch in Human Behaviour Models for Robot Learning</h1>
   <p>
-    This page hosts the supplementary material referenced in our submission. It contains additional model details, experiment details, and results that did not fit within the main paper's page limit.
+    This page hosts the supplementary material referenced in our submission. It contains additional model details, experiment details, and results.
+    The key formulations, architectures and calibrated parameters of the human behaviour models are summarised below; the complete derivations and all remaining details are in the <a class="paper-link" href="supp.pdf" target="_blank" rel="noopener">supplementary PDF</a>.
   </p>
+  <ul class="toc">
+    <li><a href="#highway">Highway driving models</a></li>
+    <li><a href="#handover">Handover giver models</a></li>
+    <li><a href="#pdf">Full supplementary PDF</a></li>
+  </ul>
 
   <hr class="divider">
 
-  <div class="viewer">
-    <object data="supp.pdf" type="application/pdf">
-      <div class="fallback">
-        Your browser can't display the PDF inline.<br>
-        Use the link below to open it directly.
+  <!-- ===================== HIGHWAY ===================== -->
+  <section id="highway">
+    <h2>Highway driving models</h2>
+    <p class="section-note">Summary of Sec. II of <a href="supp.pdf" target="_blank" rel="noopener">supp.pdf</a>. All models are trained or calibrated on the highD dataset and control the surrounding vehicles in <em>highway-fast-v0</em>.</p>
+
+    <h3>Rule-based models</h3>
+    <p>
+      Car-following parameters are inferred with Automatic Differentiation Variational Inference (ADVI) under a hierarchical Bayesian model,
+      so each vehicle $i$ gets its own parameter drawn from a population distribution. Positive parameters use a softplus link,
+      $\theta_i = \log(1+e^{\theta_i^*})$ with $\theta_i^* \sim \mathcal{N}(\mu_\theta, \sigma_\theta^2)$, and observed speeds have Gaussian noise
+      $v \sim \mathcal{N}(\mu_v, \sigma_{\text{obs}}^2)$. The tables report the posterior of the population-level hyperparameters
+      $(\mu_\theta, \sigma_\theta)$ on the latent (pre-softplus) scale, so negative means are possible. 2,000 posterior samples are drawn for all downstream experiments.
+    </p>
+
+    <div class="model">
+      <h4>MOBIL (lane changing)</h4>
+      <p>A lane change is executed only if it is safe for the new follower and gives enough incentive:</p>
+      <div class="eq">$$\tilde{a}_n \ge -b_{\text{safe}}, \qquad \tilde{a}_c - a_c + p\left(\tilde{a}_n - a_n + \tilde{a}_o - a_o\right) \ge \Delta a_{\text{th}}$$</div>
+      <p>Here $c$, $o$ and $n$ are the ego, old follower and new follower, and the tilde marks accelerations after the change. Lane changes are rare in highD (about 5,600 complete events), so MOBIL is <strong>not calibrated</strong>. Its parameters are sampled per vehicle around standard literature values:</p>
+      <ul class="params">
+        <li>$p \sim |\mathcal{N}(0,\,0.25)|$</li>
+        <li>$\Delta a_{\text{th}} \sim \mathcal{N}(0.1,\,0.05)$ m/s²</li>
+        <li>$b_{\text{safe}} \sim \mathcal{N}(4,\,2)$ m/s²</li>
+      </ul>
+      <p class="ref">Details: supp.pdf, Sec. II-A</p>
+    </div>
+
+    <div class="model">
+      <h4>Gipps' model</h4>
+      <div class="eq">$$v_n(t+\tau) = \min\left\{v_n^{\text{free}},\; v_n^{\text{safe}}\right\}, \quad v_n^{\text{free}} = v_n + 2.5\,a_n\tau\Big(1-\tfrac{v_n}{v_n^{\max}}\Big)\sqrt{0.025+\tfrac{v_n}{v_n^{\max}}}$$</div>
+      <div class="eq">$$v_n^{\text{safe}} = b_n\tau + \sqrt{(b_n\tau)^2 - b_n\Big[2s_n - v_n\tau - \tfrac{v_{n-1}^2}{b_{n-1}}\Big]}, \qquad s_n = x_{n-1}-x_n-l_{n-1}-L$$</div>
+      <p>The $\min$ is not differentiable, so the data are split by distance headway (DHW). Samples with DHW &lt; 25 m fit the safe margin $L$ through $v^{\text{safe}}$, and samples with DHW ≥ 25 m fit the desired speed $v^{\max}$ through $v^{\text{free}}$.</p>
+      <p class="label">Fixed</p>
+      <ul class="params">
+        <li>$a_n = 1.7$ m/s²</li>
+        <li>$b_n = -3.4$ m/s²</li>
+        <li>$b_{n-1} = -3$ m/s²</li>
+        <li>$\tau = 0.6$ s</li>
+      </ul>
+      <p class="label">Priors</p>
+      <ul class="params">
+        <li>$\mu_L \sim \mathcal{N}(2,1)$, $\sigma_L \sim \text{HN}(0.5)$</li>
+        <li>$\mu_{v}^{\max} \sim \mathcal{N}(20,1)$, $\sigma_{v}^{\max} \sim \text{HN}(0.5)$</li>
+        <li>$\sigma_{\text{obs}} \sim \text{HN}(1)$</li>
+        <li>ADVI: 30k iters ($L$), 100k iters ($v^{\max}$)</li>
+      </ul>
+      <div class="table-wrap">
+        <table>
+          <caption>ADVI posterior: population-level hyperparameters</caption>
+          <thead><tr><th>Parameter</th><th>Mean</th><th>SD</th><th>HDI 3%</th><th>HDI 97%</th></tr></thead>
+          <tbody>
+            <tr><td>$\mu_L$</td><td>2.486</td><td>0.068</td><td>2.358</td><td>2.610</td></tr>
+            <tr><td>$\sigma_L$</td><td>1.332</td><td>0.069</td><td>1.211</td><td>1.466</td></tr>
+            <tr><td>$\sigma_{\text{obs}}$ ($L$ fit)</td><td>1.466</td><td>0.021</td><td>1.430</td><td>1.508</td></tr>
+            <tr><td>$\mu_v^{\max}$</td><td>32.336</td><td>0.216</td><td>31.926</td><td>32.734</td></tr>
+            <tr><td>$\sigma_v^{\max}$</td><td>5.541</td><td>0.136</td><td>5.292</td><td>5.805</td></tr>
+            <tr><td>$\sigma_{\text{obs}}$ ($v^{\max}$ fit)</td><td>0.243</td><td>0.002</td><td>0.240</td><td>0.246</td></tr>
+          </tbody>
+        </table>
       </div>
-    </object>
-  </div>
+      <p class="ref">Details: supp.pdf, Sec. II-B (Tables I–II)</p>
+    </div>
 
-  <div class="actions">
-    <a class="button" href="supp.pdf" target="_blank" rel="noopener">Open supplementary PDF</a>
-    <span class="file-note">supp.pdf</span>
-  </div>
+    <div class="model">
+      <h4>Krauß model</h4>
+      <div class="eq">$$v_{\text{safe}} = v_{n-1} + \frac{d_n - v_{n-1}\tau}{\frac{v_n+v_{n-1}}{2b_n}+\tau}, \qquad v_n(t+\Delta t) = \min\left(v_{\text{safe}},\; v_n + a_n\Delta t,\; v_n^{\max}\right)$$</div>
+      <p>Here $d_n = x_{n-1}-x_n-l_{n-1}$, with no safe margin. Only the reaction time $\tau$ is inferred, from samples with DHW &lt; 25 m. All other parameters are the same as for Gipps, except $b_n = 3.4$ m/s² (positive).</p>
+      <ul class="params">
+        <li>$\mu_\tau \sim \mathcal{N}(0.8,\,0.3^2)$, $\sigma_\tau \sim \text{HN}(0.5)$</li>
+        <li>ADVI: 20k iters</li>
+      </ul>
+      <div class="table-wrap">
+        <table>
+          <caption>ADVI posterior: population-level hyperparameters</caption>
+          <thead><tr><th>Parameter</th><th>Mean</th><th>SD</th><th>HDI 3%</th><th>HDI 97%</th></tr></thead>
+          <tbody>
+            <tr><td>$\mu_\tau$</td><td>0.087</td><td>0.051</td><td>−0.006</td><td>0.184</td></tr>
+            <tr><td>$\sigma_\tau$</td><td>1.341</td><td>0.045</td><td>1.256</td><td>1.423</td></tr>
+            <tr><td>$\sigma_{\text{obs}}$</td><td>0.995</td><td>0.020</td><td>0.959</td><td>1.034</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="ref">Details: supp.pdf, Sec. II-C (Table III)</p>
+    </div>
 
-  <hr class="divider">
+    <div class="model">
+      <h4>Intelligent Driver Model (IDM)</h4>
+      <div class="eq">$$\dot{v}_n = a_n\left[1-\Big(\frac{v_n}{v^{\max}}\Big)^{\delta} - \Big(\frac{d_n^*}{d_n}\Big)^2\right], \qquad d_n^* = d_0 + T v_n + \frac{v_n(v_n - v_{n-1})}{2\sqrt{a_n b_n}}$$</div>
+      <p>IDM is a second-order model and fully differentiable, so every observation is used. Three parameters are inferred: desired speed $v^{\max}$, jam distance $d_0$ and safe time headway $T$.</p>
+      <p class="label">Fixed</p>
+      <ul class="params">
+        <li>$\delta = 4$</li>
+        <li>$a_n = 0.73$ m/s²</li>
+        <li>$b_n = 1.67$ m/s²</li>
+      </ul>
+      <p class="label">Priors</p>
+      <ul class="params">
+        <li>$\mu_v^{\max} \sim \mathcal{N}(30,1)$, $\sigma_v^{\max} \sim \text{HN}(0.5)$</li>
+        <li>$\mu_{d_0} \sim \mathcal{N}(2,1)$, $\sigma_{d_0} \sim \text{HN}(1)$</li>
+        <li>$\mu_T \sim \mathcal{N}(1.5,\,0.5^2)$, $\sigma_T \sim \text{HN}(0.5)$</li>
+        <li>ADVI: 15k iters</li>
+      </ul>
+      <div class="table-wrap">
+        <table>
+          <caption>ADVI posterior: population-level hyperparameters</caption>
+          <thead><tr><th>Parameter</th><th>Mean</th><th>SD</th><th>HDI 3%</th><th>HDI 97%</th></tr></thead>
+          <tbody>
+            <tr><td>$\mu_v^{\max}$</td><td>32.671</td><td>0.096</td><td>32.491</td><td>32.848</td></tr>
+            <tr><td>$\sigma_v^{\max}$</td><td>1.249</td><td>0.085</td><td>1.102</td><td>1.408</td></tr>
+            <tr><td>$\mu_{d_0}$</td><td>0.371</td><td>0.088</td><td>0.210</td><td>0.540</td></tr>
+            <tr><td>$\sigma_{d_0}$</td><td>1.338</td><td>0.085</td><td>1.183</td><td>1.504</td></tr>
+            <tr><td>$\mu_T$</td><td>−0.812</td><td>0.086</td><td>−0.979</td><td>−0.664</td></tr>
+            <tr><td>$\sigma_T$</td><td>1.258</td><td>0.084</td><td>1.110</td><td>1.427</td></tr>
+            <tr><td>$\sigma_{\text{obs}}$</td><td>2.094</td><td>0.137</td><td>1.863</td><td>2.371</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="ref">Details: supp.pdf, Sec. II-D (Table IV)</p>
+    </div>
 
-  <div class="videos">
+    <div class="model">
+      <h4>Unif and Unif-W (random baselines)</h4>
+      <ul class="params">
+        <li>Unif: $a^{\text{lon}} \sim U(-4,3)$, $a^{\text{lat}} \sim U(-2,2)$</li>
+        <li>Unif-W: $a^{\text{lon}} \sim U(-4,3)$, $a^{\text{lat}} \sim U(-6,6)$</li>
+      </ul>
+      <p class="ref">Details: supp.pdf, Sec. II-E</p>
+    </div>
+
+    <h3>Data-driven models</h3>
+    <p>
+      All three are trained by behaviour cloning on highD state–action pairs. The data are downsampled from 25 to 5 fps and split 80/10/10, giving about 1.7M training samples.
+      The 48-dimensional ego-centric state is
+      $\mathbf{s} = [v_e^{\text{lon}}, v_e^{\text{lat}}, l_e, \delta y_e, \mathbb{1}_{\text{left}}, \mathbb{1}_{\text{right}}, s_p, s_{la}, s_{lp}, s_{lf}, s_{ra}, s_{rp}, s_{rf}]$.
+      Each of the seven neighbours is encoded as $s_i = [\mathbb{1}_i, l_i, \Delta x_i, \Delta y_i, \Delta v_i^{\text{lon}}, \Delta v_i^{\text{lat}}]$ and set to zero if absent.
+      The action is $\mathbf{a} = [a^{\text{lon}}, a^{\text{lat}}]$.
+    </p>
+
+    <div class="model">
+      <h4>MLP</h4>
+      <div class="eq">$$\mathcal{L}_{\text{MLP}} = \frac{1}{B}\sum_{i=1}^{B}\big\|\hat{\mathbf{a}}_i - \mathbf{a}_i^{\text{gt}}\big\|_2^2$$</div>
+      <ul class="params">
+        <li>2 hidden layers × 64, ReLU</li>
+        <li>batch 1024</li>
+        <li>lr $10^{-3}$</li>
+        <li>≤100 epochs, patience 10</li>
+        <li>test loss 0.62</li>
+      </ul>
+      <p class="ref">Details: supp.pdf, Sec. II-F</p>
+    </div>
+
+    <div class="model">
+      <h4>Mixture density network (MDN)</h4>
+      <div class="eq">$$p(\mathbf{a}\mid\mathbf{s}) = \sum_{k=1}^{K}\alpha_k(\mathbf{s})\,\mathcal{N}\big(\mathbf{a}\mid\boldsymbol{\mu}_k(\mathbf{s}), \operatorname{diag}(\sigma_{k,\text{lon}}^2, \sigma_{k,\text{lat}}^2)\big)$$</div>
+      <div class="eq">$$\mathcal{L}_{\text{MDN}} = \text{NLL} + \lambda_{\text{usage}}\, D_{\mathrm{KL}}(\bar{\mathbf{r}}\,\|\,U) + \lambda_{\text{div}}\,\frac{1}{K(K-1)B}\sum_{i}\sum_{k\neq j}\exp\!\big(-D_{\mathrm{KL}}(\mathcal{N}_k^{(i)}\|\mathcal{N}_j^{(i)})\big)$$</div>
+      <p>$\bar{\mathbf{r}}$ is the batch-averaged component responsibility. The usage term discourages mode collapse, and the diversity term penalises overlapping components.</p>
+      <ul class="params">
+        <li>$K = 15$ components</li>
+        <li>2 hidden layers × 128, ReLU</li>
+        <li>$\lambda_{\text{usage}} = 0.05$</li>
+        <li>$\lambda_{\text{div},e} = 0.01\,e^{-0.05e}$</li>
+        <li>batch 512, lr $10^{-3}$</li>
+        <li>test loss 1.88</li>
+      </ul>
+      <p class="ref">Details: supp.pdf, Sec. II-G</p>
+    </div>
+
+    <div class="model">
+      <h4>Attention-based model (CVAE)</h4>
+      <figure class="figure">
+        <a href="figures/attention_based_model.png" target="_blank" rel="noopener">
+          <img src="figures/attention_based_model.png" alt="Attention-based highway model: the current ego state queries its history via multi-head attention to give z_ego, which queries the surrounding-vehicle states to give z_inter; their concatenation z conditions a CVAE that outputs the ego action." loading="lazy">
+        </a>
+        <figcaption>
+          The current ego state $\mathbf{s}^t_{\text{ego}}$ attends to its past $h$ states to produce $\mathbf{z}_{\text{ego}}$, which then attends to the $N=7$ surrounding vehicles over $h+1$ steps to produce $\mathbf{z}_{\text{inter}}$.
+          Their concatenation $\mathbf{z}$ conditions a CVAE. During training the encoder also sees the ground-truth action $\mathbf{a}^t_{\text{ego}}$; at inference $\mathbf{z}_{\text{lat}}$ is sampled from the prior.
+        </figcaption>
+      </figure>
+      <div class="eq">$$\mathcal{L}_{\text{CVAE}} = \mathbb{E}_{q_\phi(\mathbf{z}_{\text{lat}}\mid\mathbf{a},\mathbf{z})}\big\|\mathbf{a} - f_\theta([\mathbf{z},\mathbf{z}_{\text{lat}}])\big\|_2^2 + \beta\, D_{\mathrm{KL}}\big(q_\phi(\mathbf{z}_{\text{lat}}\mid\mathbf{a},\mathbf{z})\,\|\,\mathcal{N}(0,I)\big)$$</div>
+      <p>At inference $\mathbf{z}_{\text{lat}} \sim \mathcal{N}(0,I)$, which gives stochastic actions. The design is a simplified attention-based variant of Trajectron++, with attention in place of LSTMs and direct action prediction.</p>
+      <ul class="params">
+        <li>history $h = 4$</li>
+        <li>4 heads, $d_z = 32$, dropout 0.1, LayerNorm + residual</li>
+        <li>encoder 2-layer MLP (64), decoder 3-layer MLP (64)</li>
+        <li>$d_{\text{lat}} = 16$, $\beta = 1$</li>
+        <li>AdamW, lr $10^{-3}$, wd $10^{-4}$, batch 64, grad clip 1.0</li>
+        <li>test loss 0.52</li>
+      </ul>
+      <p class="ref">Details: supp.pdf, Sec. II-H (Fig. 1)</p>
+    </div>
+
+    <h3>Validation against highD</h3>
+    <div class="table-wrap">
+      <table>
+        <caption>$D_{\mathrm{KL}}(P_{\text{highD}}\,\|\,Q_{\text{model}})$ of driving-feature distributions (lower is better; best in bold)</caption>
+        <thead><tr><th>Model</th><th>Velocity</th><th>Rel. preceding vel.</th><th>Distance headway</th><th>Acceleration</th></tr></thead>
+        <tbody>
+          <tr><td>Gipps</td><td>0.024</td><td>0.510</td><td>0.214</td><td>0.148</td></tr>
+          <tr><td>Krauß</td><td>0.067</td><td>0.515</td><td>0.316</td><td>0.188</td></tr>
+          <tr><td>IDM</td><td>0.142</td><td>0.687</td><td>0.219</td><td>0.087</td></tr>
+          <tr><td>MLP</td><td>0.010</td><td>0.071</td><td><strong>0.013</strong></td><td>0.029</td></tr>
+          <tr><td>MDN</td><td>0.002</td><td>0.338</td><td>0.031</td><td><strong>0.024</strong></td></tr>
+          <tr><td>Attention</td><td><strong>0.001</strong></td><td>0.340</td><td>0.053</td><td>0.267</td></tr>
+          <tr><td>Unif</td><td>0.030</td><td><strong>0.048</strong></td><td>0.024</td><td>0.099</td></tr>
+          <tr><td>Unif-W</td><td>0.032</td><td>0.055</td><td>0.031</td><td>0.099</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="ref">Feature distributions and summary statistics: supp.pdf, Sec. II-I</p>
+
     <div class="video-block">
-      <h2>Highway scenario</h2>
+      <h3>Highway scenario</h3>
       <p>Simulated trajectories from our calibrated human model in the highway setting.</p>
       <video controls preload="metadata">
-        <source src="highway_models.mp4" type="video/mp4">
-        Your browser doesn't support embedded video. <a href="highway_models.mp4">Download the file</a> instead.
+        <source src="videos/highway_models.mp4" type="video/mp4">
+        Your browser doesn't support embedded video. <a href="videos/highway_models.mp4">Download the file</a> instead.
       </video>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- ===================== HANDOVER ===================== -->
+  <section id="handover">
+    <h2>Handover giver models</h2>
+    <p class="section-note">Summary of Sec. III of <a href="supp.pdf" target="_blank" rel="noopener">supp.pdf</a>. Models generate the human giver's right-hand trajectory and are fitted to 1,281 preprocessed giver trajectories from handover@RPL.</p>
+
+    <h3>Rule-based models</h3>
+
+    <div class="model">
+      <h4>Minimum jerk</h4>
+      <div class="eq">$$\min_{\mathbf{p}(t)}\int_0^T\Big\|\tfrac{d^3\mathbf{p}}{dt^3}\Big\|_2^2 dt \;\;\Rightarrow\;\; \mathbf{p}(t) = \mathbf{p}_0 + \big(10\tau^3 - 15\tau^4 + 6\tau^5\big)(\mathbf{p}_T - \mathbf{p}_0), \quad \tau = t/T$$</div>
+      <p>The model has no learnable parameters. The start position $\mathbf{p}_0$, end position $\mathbf{p}_T$ and duration $T$ are each sampled from Gaussians fitted to the human training data.</p>
+      <p class="ref">Details: supp.pdf, Sec. III-A</p>
     </div>
 
+    <div class="model">
+      <h4>Elliptical model</h4>
+      <p>Each trajectory is approximately planar: PCA variance along PC3 is significantly smaller than along PC1 and PC2 (RM-ANOVA, $F(2,1136)=6628.24$, $p_{\mathrm{GG}}\lt 0.001$). Each trajectory is therefore projected onto its PC1–PC2 plane, and an ellipse is fitted there by direct least squares (Fitzgibbon et al.):</p>
+      <div class="eq">$$Ax^2 + Bxy + Cy^2 + Dx + Ey + F = 0$$</div>
+      <ul>
+        <li>Duration is modelled with a univariate Gaussian; start/end points plus ellipse parameters with a multivariate Gaussian; principal axes plus 3-D plane offset with a separate multivariate Gaussian.</li>
+        <li>Generation: sample the parameters, take the shortest elliptical arc between the projected endpoints, map it back to 3-D, retime it with the minimum-jerk profile $s(\tau)=10\tau^3-15\tau^4+6\tau^5$, then apply a linear endpoint correction.</li>
+      </ul>
+      <p class="ref">Details: supp.pdf, Sec. III-B</p>
+    </div>
+
+    <div class="model">
+      <h4>Dynamic Movement Primitive (DMP)</h4>
+      <div class="eq">$$\tau\dot{v} = K(g-y) - Dv + (g-y_0)f(s), \qquad \tau\dot{y} = v, \qquad s(t) = \exp(-\alpha_s t/\tau)$$</div>
+      <div class="eq">$$f(s) = \frac{\sum_{i=1}^{N} w_i\psi_i(s)}{\sum_{i=1}^{N}\psi_i(s)}\,s, \quad \psi_i(s) = e^{-h_i(s-c_i)^2}, \quad c_i = e^{-\alpha_s\frac{i-1}{N-1}}, \quad h_i = N/c_i^2$$</div>
+      <p>A DMP is fitted to every demonstration (per dimension, by locally weighted regression). A Gaussian is then fitted over the weight vectors, $\mathbf{w}\sim\mathcal{N}(\boldsymbol{\mu}_w, \boldsymbol{\Sigma}_w)$. At generation time, $y_0$, $g$, $\tau$ and $\mathbf{w}$ are sampled and the system is Euler-integrated.</p>
+      <ul class="params">
+        <li>$N = 20$ basis functions</li>
+        <li>$K = 100$</li>
+        <li>$D = 20$</li>
+        <li>$\alpha_s = 4.6$</li>
+      </ul>
+      <p class="ref">Details: supp.pdf, Sec. III-C</p>
+    </div>
+
+    <h3>Data-driven models</h3>
+    <p>
+      Trajectories are downsampled to 20 Hz. The input is a sliding window of 5 frames ($T-4$ to $T$) of the standardised 3-D positions of the giver's and taker's right hands, $\mathbf{s}_T \in \mathbb{R}^{5\times 6}$.
+      The target is the standardised 3-D displacement of the giver's hand from $T$ to $T+1$.
+    </p>
+
+    <div class="model">
+      <h4>MLP</h4>
+      <p>Same architecture and training as the highway MLP (2 × 64, ReLU, MSE). The input is flattened to $\mathbb{R}^{30}$ and the output is in $\mathbb{R}^{3}$.</p>
+      <p class="ref">Details: supp.pdf, Sec. III-D</p>
+    </div>
+
+    <div class="model">
+      <h4>MDN</h4>
+      <p>Same architecture, loss and training as the highway MDN, but with <strong>$K = 5$</strong> mixture components (down from 15) to match the lower behavioural complexity of the task.</p>
+      <p class="ref">Details: supp.pdf, Sec. III-E</p>
+    </div>
+
+    <div class="model">
+      <h4>Attention-based model</h4>
+      <div class="pipeline" aria-label="Handover attention model architecture">
+        <span class="node">$\mathbf{X}\in\mathbb{R}^{5\times 6}$</span><span class="arrow">→ linear →</span>
+        <span class="node">$\mathbf{Z}\in\mathbb{R}^{5\times128}$</span><span class="arrow">→</span>
+        <span class="node">4-head self-attn + residual + LayerNorm</span><span class="arrow">→ mean pool →</span>
+        <span class="node">$\mathbb{R}^{128}$</span><span class="arrow">→</span>
+        <span class="node">Linear(128) · ReLU · Linear(3)</span>
+      </div>
+      <div class="eq">$$\mathbf{Z}' = \operatorname{LayerNorm}\big(\mathbf{Z} + \operatorname{MHA}(\mathbf{Z},\mathbf{Z},\mathbf{Z})\big), \qquad \mathbf{z}_{\text{pool}} = \tfrac{1}{T}\textstyle\sum_{t}\mathbf{Z}'_t$$</div>
+      <p class="ref">Details: supp.pdf, Sec. III-F</p>
+    </div>
+
+    <h3>Validation against human data</h3>
+    <div class="table-wrap">
+      <table>
+        <caption>$D_{\mathrm{KL}}(P_{\text{human}}\,\|\,Q_{\text{model}})$ of giver trajectory features (lower is better; best in bold)</caption>
+        <thead><tr><th>Model</th><th>End-to-end len.</th><th>Path len.</th><th>Avg. speed</th><th>Avg. accel.</th><th>Smoothness</th><th>Curvature</th></tr></thead>
+        <tbody>
+          <tr><td>Min. jerk</td><td>0.054</td><td>0.064</td><td>0.084</td><td>0.696</td><td>11.743</td><td>1.602</td></tr>
+          <tr><td>Elliptical</td><td>0.060</td><td>0.060</td><td>0.069</td><td>0.399</td><td>2.298</td><td>1.109</td></tr>
+          <tr><td>DMP</td><td>0.067</td><td><strong>0.057</strong></td><td><strong>0.068</strong></td><td><strong>0.250</strong></td><td>2.299</td><td>0.288</td></tr>
+          <tr><td>MLP</td><td>0.118</td><td>0.336</td><td>1.059</td><td>0.951</td><td>2.397</td><td>4.083</td></tr>
+          <tr><td>MDN</td><td><strong>0.037</strong></td><td>0.093</td><td>4.088</td><td>0.644</td><td>7.449</td><td><strong>0.270</strong></td></tr>
+          <tr><td>Attention</td><td>0.140</td><td>0.211</td><td>1.824</td><td>1.619</td><td><strong>1.871</strong></td><td>3.770</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="ref">Feature distributions and summary statistics: supp.pdf, Sec. III-G</p>
+
     <div class="video-block">
-      <h2>Handover scenario</h2>
+      <h3>Handover scenario</h3>
       <p>Simulated trajectories from our calibrated human model in the handover setting.</p>
       <video controls preload="metadata">
-        <source src="handover_models.mp4" type="video/mp4">
-        Your browser doesn't support embedded video. <a href="handover_models.mp4">Download the file</a> instead.
+        <source src="videos/handover_models.mp4" type="video/mp4">
+        Your browser doesn't support embedded video. <a href="videos/handover_models.mp4">Download the file</a> instead.
       </video>
     </div>
-  </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- ===================== PDF ===================== -->
+  <section id="pdf">
+    <h2>Full supplementary PDF</h2>
+    <p class="section-note">Also covers dataset and environment details, trajectory generation, trajectory representations, evaluation metrics and RL training details.</p>
+
+    <div class="viewer">
+      <object data="supp.pdf" type="application/pdf">
+        <div class="fallback">
+          Your browser can't display the PDF inline.<br>
+          Use the link below to open it directly.
+        </div>
+      </object>
+    </div>
+
+    <div class="actions">
+      <a class="button" href="supp.pdf" target="_blank" rel="noopener">Open supplementary PDF</a>
+      <span class="file-note">supp.pdf</span>
+    </div>
+  </section>
 
   <footer>
     Submitted anonymously for double-blind review.
